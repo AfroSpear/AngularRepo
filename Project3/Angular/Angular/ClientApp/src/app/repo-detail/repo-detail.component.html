@@ -1,0 +1,75 @@
+
+<div *ngIf="repo" class="container">
+
+  <div class="row">
+    <div class="col"></div>
+    <div class="card" style="width: 18rem;">
+     
+      <div class="card-body">
+        <p class="card-text"> <strong> Repo_Name :</strong> {{repo.name}}  </p>
+        <p class="card-text">  <strong> Githublink :</strong><a [href]="repo.html_url"> repo.html_url </a> </p>
+        <p class="card-text">  <strong> Description : </strong> {{repo.description}}  </p>
+        <p class="card-text">  <strong> # of Stars : </strong>  {{repo.stargazers_count}} </p>
+        
+        <p class="card-text">  <strong> # of Watchers  : </strong>  {{repo.watchers}} </p>
+        <p class="card-text">  <strong> # of Forks : </strong>  {{repo.forks}} </p>
+        <p class="card-text">  <strong> # of Open Issues : </strong>  {{repo.open_issues_count}} </p>
+        <p class="card-text">  <strong> Language : </strong>  {{repo.language}} </p>
+        <p class="card-text">  <strong> Clone Url : </strong>  {{repo.clone_url}} </p>
+      </div>
+    </div>
+    </div>
+
+
+
+  <div class="row">
+    <div class="col">
+      <h3> Commits </h3>
+      <table class="table">
+        <tr>
+          <th> Author </th>
+          <th> Link </th>
+          <th> Commit Message </th>
+          <th> Comment count </th>
+        </tr>
+        <tr *ngFor="let commits of commit">
+          <td>{{commits.commit.author.name}}</td>
+          <td><a [href]="commits.html_url"> {{commits.html_url}} </a></td>
+          <td>{{commits.commit.message}}</td>
+          <td>{{commits.commit.comment_count}}</td>
+        </tr>
+      </table>
+
+    </div>
+
+    <div class="col">
+      <h3> Issues </h3>
+      <table class="table">
+        <tr>
+          <th>Title  </th>
+          <th>Created Date </th>
+          <th>Link </th>
+        </tr>
+        <tr *ngFor="let issues of issue">
+          <td>{{issues.title}}</td>
+          <td>{{issues.created_at}}</td>
+          <td><a [href]="issues.html"> {{issues.html_url}}</a></td>
+
+        </tr>
+      </table>
+      <div>
+        <button class="btn-primary" (click)="previousPaging()">Previous</button>
+        <button class="btn-primary" (click)="nextPaging()">Next</button>
+
+      </div>
+
+    </div>
+
+
+
+
+  </div>
+</div>
+
+
+

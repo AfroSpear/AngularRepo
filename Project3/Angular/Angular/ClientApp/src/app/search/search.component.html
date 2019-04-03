@@ -1,0 +1,92 @@
+
+<form>
+  <div class="form-group">
+    <label for="searchString"> User/Repository Name </label>
+    <input [(ngModel)]="searchString" type="text" class="form-control" id="searchString" placeholder="Search Criteria..." [ngModelOptions]="{standalone: true}">
+  </div>
+
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <button type="button" (click)="search2()" class="btn btn-primary">Search Repos</button>
+      </div>
+
+      <div class="col">
+        <button type="button" (click)="search()" class="btn btn-primary">Search Users</button>
+      </div>
+
+    </div>
+  </div>
+
+</form>
+
+<div *ngIf="loading">
+  Loading ...
+</div>
+
+<div *ngIf="searchResults && !loading">
+
+
+
+  <table class="table">
+    <tr>
+      <th>Name</th>
+      <th>Image</th>
+    </tr>
+    <tr *ngFor="let user of searchResults">
+      <td><a [routerLink]='["/user" , user.id]'>{{user.login}}</a> </td>
+      <td> <img src="{{user.avatar_url}}" /> </td>
+    </tr>
+
+
+  </table>
+
+  <div>
+    <button class="btn-primary" (click)="previousPage()">Previous</button>
+    <button class="btn-primary" (click)="nextPage()">Next</button>
+
+  </div>
+
+  <div class="alert alert-warning" role="alert" *ngIf="searchFail">
+    No Results for this search
+  </div>
+
+</div>
+
+
+<div *ngIf="repoResults && !loading">
+
+
+  <table class="table">
+    <tr>
+      <th>Repo_name</th>
+      <th>Owner_Image</th>
+      <th>Stars </th>
+      <th>Open Issues</th>
+      <th> Language </th>
+    </tr>
+    <tr *ngFor="let repository of repoResults">
+      <td><a [routerLink]='["/repository" , repository.id]'>  {{repository.name}} </a></td>
+      <td> <img src="{{repository.owner.avatar_url}}" /> </td>
+      <td>{{repository.stargazers_count}}</td>
+      <td>{{repository.open_issues_count}}</td>
+      <td>{{repository.language}}</td>
+    </tr>
+  </table>
+
+  <div>
+    <button class="btn-primary" (click)="previousR()">Previous</button>
+    <button class="btn-primary" (click)="nextR()">Next</button>
+
+  </div>
+
+  <div class="alert alert-warning" role="alert" *ngIf="searchFail">
+     No Results for this search
+  </div>
+
+</div>
+
+
+

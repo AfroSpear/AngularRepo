@@ -1,0 +1,64 @@
+<!--<app-user *ngIf="user" [user]="user"></app-user>-->
+
+
+<div class="container" *ngIf="!loading">
+
+  <div class="row">
+    <div class="col"></div>
+    <div class="card" style="width: 18rem;">
+      <img src="{{user.avatar_url}}" class="card-img-top" alt="Card image cap">
+      <div class="card-body">
+        <p class="card-text"> <strong> Name :</strong> {{user.name}}  </p>
+        <p class="card-text">  <strong> Login :</strong> {{user.login}}  </p>
+        <p class="card-text">  <strong> Location : </strong> {{user.location}}  </p>
+        <p class="card-text">  <strong> Blog : </strong><a [href]="user.blog"> {{user.blog}} </a>  </p>
+        <p class="card-text">  <strong> Github Profile Link : </strong><a [href]="user.html_url">{{user.html_url}}</a> </p>
+      </div>
+    </div>
+
+
+
+    <div class="col">
+      <h3> Repositories </h3>
+      <table class="table">
+        <tr>
+          <th> Repo_Name </th>
+          <th> Stars </th>
+          <th> Open Issues</th>
+          <th> Language </th>
+        </tr>
+        <tr *ngFor="let repo of repoResults">
+          <td>{{repo.name}}</td>
+          <td>{{repo.stargazers_count}}</td>
+          <td>{{repo.open_issues}}</td>
+          <td>{{repo.language}}</td>
+        </tr>
+      </table>
+
+    </div>
+
+    <div class="col">
+      <h3> Followers </h3>
+      <table class="table">
+        <tr>
+          <th> Follower_Name </th>
+          <th> Follower_Image </th>
+
+        </tr>
+        <tr *ngFor="let follow of follower">
+          <td><a [routerLink]='["/user" , follow.id]'> {{follow.login}}</a> </td>
+          <td> <img src= "{{follow.avatar_url}}" ></td>
+
+        </tr>
+      </table>
+
+    </div>
+
+
+
+
+  </div>
+</div>
+
+
+
