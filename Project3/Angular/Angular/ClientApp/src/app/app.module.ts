@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 
 import { UserComponent } from './user/user.component';
-import { UserRolodexComponent } from './user-rolodex/user-rolodex.component';
+
 import { SearchComponent } from './search/search.component';
 import { RepositoriesComponent } from './repositories/repositories.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
@@ -19,7 +19,7 @@ import { RepoDetailComponent } from './repo-detail/repo-detail.component';
     AppComponent,
     NavMenuComponent,
     UserComponent,
-    UserRolodexComponent,
+
     SearchComponent,
     RepositoriesComponent,
     UserDetailComponent,
@@ -32,7 +32,7 @@ import { RepoDetailComponent } from './repo-detail/repo-detail.component';
     RouterModule.forRoot([
       { path: '', component: SearchComponent, pathMatch: 'full' },
       { path: 'repositories', component: RepositoriesComponent },
-      { path: 'users', component: UserRolodexComponent },
+     
       { path: 'user/:id', component: UserDetailComponent },
       { path: 'repository/:id', component: RepoDetailComponent },
     ])

@@ -1,0 +1,45 @@
+
+<h3> Welcome To your ToDO_List Creator.</h3>
+<p> Create a "To DO" just by fill in the form . </p>
+<form>
+
+
+
+  <div class="form-group">
+    <label for="name">Description</label>
+    <input type="text" class="form-control" id="name" name="name" [(ngModel)]="newTodo.name" placeholder="Enter what to do">
+
+  </div>
+  <div class="form-group">
+    <label for="DueDate">Due Date</label>
+    <div class="input-group">
+      <input class="form-control" placeholder="yyyy-mm-dd"
+             name="DueDate" [(ngModel)]="DueDate" ngbDatepicker #d="ngbDatepicker">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i class="fas fa-calendar-alt"></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="DueTime">Due Time</label>
+    <ngb-timepicker id="DueTime" [(ngModel)]="DueTime" name="DueTime"></ngb-timepicker>
+  </div>
+
+  <div class="form-group">
+    <label for="name">Tag</label>
+    <input type="text" class="form-control" id="name" name="name" [(ngModel)]="newTodo.tags" placeholder="Add Tags">
+
+    </div>
+
+  <div class="form-group">
+    <label for="name">Active/completed</label>
+    <input type="text" class="form-control" id="name" name="name" [(ngModel)]="newTodo.state" placeholder="Add state">
+
+  </div>
+
+    <button type="submit" (click)="createTodo()" class="btn btn-primary">{{newTodo.id ? 'Update' : 'Create'}}</button>
+</form>
+
+
+
+
