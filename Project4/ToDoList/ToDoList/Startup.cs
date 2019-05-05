@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
@@ -45,6 +46,13 @@ namespace ToDoList
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
             });
 
+            services.AddIdentity<TodoUser, IdentityRole>(config =>
+            {
+                config.Password.RequireDigit = true;
+                config.Password.RequiredLength = 8;
+                config.Password.RequireUppercase = true;
+            }).AddEntityFrameworkStores<TodoContext>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -75,6 +83,8 @@ namespace ToDoList
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
                 
             });
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

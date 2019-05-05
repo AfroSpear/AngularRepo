@@ -12,6 +12,7 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { CreateTodoComponent } from './create-todo/create-todo.component';
 import { LocalTodoRolodexComponent } from './local-todo-rolodex/local-todo-rolodex.component';
+import { UserCreateComponent } from './user-create/user-create.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { LocalTodoRolodexComponent } from './local-todo-rolodex/local-todo-rolod
     CounterComponent,
     FetchDataComponent,
     CreateTodoComponent,
-    LocalTodoRolodexComponent
+    LocalTodoRolodexComponent,
+    UserCreateComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -33,7 +35,10 @@ import { LocalTodoRolodexComponent } from './local-todo-rolodex/local-todo-rolod
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'todo/create', component: CreateTodoComponent },
       { path: 'todo/update/:id', component: CreateTodoComponent },
-      { path: 'localtodos', component: LocalTodoRolodexComponent }
+      { path: 'localtodos', component: LocalTodoRolodexComponent },
+      { path: 'user/create', component: UserCreateComponent },
+      { path: 'try', component: UserCreateComponent},
+
     ]),
     NgbModule
   ],
